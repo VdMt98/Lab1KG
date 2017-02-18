@@ -12,22 +12,25 @@ namespace Lab1KG
         public string name;
         public Point position;
         public Size size;
-        public Color color;
+        public Pen pen;
         public bool fillShape;
+        public readonly Graphics graphics;
 
-        public BaseShape() {
+        public BaseShape(Graphics graphics) {
+            this.graphics = graphics;
             this.name = "emptyShape";
             this.position = new Point(0, 0);
             this.size = new Size(10, 10);
-            this.color = Color.Black;
+            this.pen = new Pen(Color.Black, 1);
             this.fillShape = false;
         }
 
-        public BaseShape(string name, Point position, Size size, Color color, bool fillShape) {
+        public BaseShape(Graphics graphics, string name, Point position, Size size, Pen pen, bool fillShape) {
+            this.graphics = graphics;
             this.name = name;
             this.position = position;
             this.size = size;
-            this.color = color;
+            this.pen = pen;
             this.fillShape = fillShape;
         }
 
