@@ -7,33 +7,40 @@ using System.Drawing;
 
 namespace Lab1KG
 {
-    public abstract class BaseShape
+    public class BaseShape
     {
         public string name;
-        public Point position;
-        public Size size;
-        public Pen pen;
-        public bool fillShape;
-        public readonly Graphics graphics;
 
-        public BaseShape(Graphics graphics) {
-            this.graphics = graphics;
+        public Point position;
+        public int size;
+        public Pen rectanlePen;
+        public Pen circlePen;
+        public bool fillShape;
+
+
+        public BaseShape() {
             this.name = "emptyShape";
-            this.position = new Point(0, 0);
-            this.size = new Size(10, 10);
-            this.pen = new Pen(Color.Black, 1);
+            this.position = new Point(100, 100);
+            this.size = 100;
+            this.rectanlePen = new Pen(Color.Black, 1);
             this.fillShape = false;
         }
 
-        public BaseShape(Graphics graphics, string name, Point position, Size size, Pen pen, bool fillShape) {
-            this.graphics = graphics;
+        public BaseShape(string name, Point position, int size, Pen pen, bool fillShape) {
             this.name = name;
             this.position = position;
             this.size = size;
-            this.pen = pen;
+            this.rectanlePen = pen;
             this.fillShape = fillShape;
         }
 
-        public abstract void Draw();
+
+        public void Draw(Graphics graphics, Point center) {
+            Point drawPoint = new Point(center.X + position.X, center.Y + position.Y);
+            Rectangle rect = new Rectangle(drawPoint, new Size(size, size));
+            Rectangle elipse = new Rectangle(drawPoint, new Size(size, size));
+            graphics.DrawRectangle(rectanlePen, rect);
+            graphics.DrawEllipse(rectanlePen, rect);
+        }
     }
 }
