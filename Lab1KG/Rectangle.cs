@@ -13,6 +13,9 @@ namespace Lab1KG
             
         }
 
+        public Rectangle(Graphics graphics, string name, Point position, Size size, Pen pen, bool fillShape) : 
+            base(graphics, name, position, size, pen, fillShape) { }
+
 
         public override void Draw()
         {
