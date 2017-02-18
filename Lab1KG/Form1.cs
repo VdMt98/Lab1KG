@@ -15,6 +15,8 @@ namespace Lab1KG
         public Form1()
         {
             InitializeComponent();
+            
+
         }
     }
 }
